@@ -5,7 +5,17 @@ import Photo from "../shared/Photo";
 import placeholder from "../../assets/placeholder.png";
 import "./Advert.css";
 
-const Advert = ({ name, sale, createdAt, price, tags, photo, isDetail, onDelete, isLoading }) => {
+const Advert = ({
+  name,
+  sale,
+  createdAt,
+  price,
+  tags,
+  photo,
+  isDetail,
+  onDelete,
+  isLoading,
+}) => {
   sale = sale ? "Venta" : "Compra";
   price = String(price) + "€";
 
@@ -20,7 +30,7 @@ const Advert = ({ name, sale, createdAt, price, tags, photo, isDetail, onDelete,
       </ConfirmationButton>
     ) : (
       <span></span>
-    )
+    );
   };
 
   return (
@@ -47,11 +57,9 @@ const Advert = ({ name, sale, createdAt, price, tags, photo, isDetail, onDelete,
           Tags: <span>{tags}</span>
         </div>
         <div>
-        <img src={photo || placeholder} style={{ width: "400px" }}></img>
+          <img src={photo || placeholder} style={{ width: "400px" }}></img>
         </div>
-        <div>
-        {deleteButton()}
-        </div>
+        <div>{deleteButton()}</div>
       </div>
     </article>
   );

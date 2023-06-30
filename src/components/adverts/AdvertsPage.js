@@ -49,9 +49,9 @@ const AdvertsPage = () => {
   );
 
   const saleFilter = {
-    todos: { value: '', label: 'Todos' },
-    venta: { value: 'Venta', label: 'Venta' },
-    compra: { value: 'Compra', label: 'Compra' },
+    todos: { value: "", label: "Todos" },
+    venta: { value: "Venta", label: "Venta" },
+    compra: { value: "Compra", label: "Compra" },
   };
 
   return (

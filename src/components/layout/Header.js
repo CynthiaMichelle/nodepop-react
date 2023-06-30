@@ -1,22 +1,11 @@
-import Button from "../shared/Button";
-import {AuthButton}  from "../auth/AuthButton"
+import { AuthButton } from "../auth/AuthButton";
 import logo from "../../assets/logo.png";
-import { logout } from "../auth/service";
 import classNames from "classnames";
-import { ConfirmationButton } from '../common/';
 
 import "./Header.css";
 import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../auth/context";
 
 const Header = ({ className }) => {
-  const { isLogged, onLogout } = useAuth();
-
-  const handleLogoutClick = async () => {
-    await logout();
-    onLogout();
-  };
-
   return (
     <header className={classNames("header", className)}>
       <Link to="/">
@@ -30,7 +19,7 @@ const Header = ({ className }) => {
         </NavLink>{" "}
         <NavLink to="/adverts" className="header-nav-item" end>
           Últimos anuncios
-         </NavLink>
+        </NavLink>
         <span> </span>
         <AuthButton />
       </nav>

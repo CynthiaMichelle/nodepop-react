@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function useQuery(query) {
   const [data, setData] = useState(undefined);
@@ -27,10 +27,10 @@ function useQuery(query) {
       } catch (error) {
         finishExecution(error);
         if (error.statusCode === 401) {
-          navigate('/login');
+          navigate("/login");
         }
         if (error.statusCode === 404) {
-          navigate('/404');
+          navigate("/404");
         }
       }
     };

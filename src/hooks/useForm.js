@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const getValueByType = {
   checkbox: ({ checked }) => checked,
 
   number: ({ value }) => Number(value),
 
-  'select-multiple': ({ selectedOptions }) =>
+  "select-multiple": ({ selectedOptions }) =>
     [...selectedOptions].map(({ value }) => value),
 
   file: ({ files }) => files[0] || null,
@@ -17,24 +17,26 @@ function useForm(initialFormValue) {
   const [formValue, setFormValue] = useState(initialFormValue);
 
   const updateFormValue = (name, value) => {
-    setFormValue(currentFormValue => ({
+    setFormValue((currentFormValue) => ({
       ...currentFormValue,
       [name]: value,
     }));
   };
 
-  const handleChange = ev => {
+  const handleChange = (ev) => {
     const valueGetter = getValueByType[ev.target.type] || defaultGetValue;
     updateFormValue(ev.target.name, valueGetter(ev.target));
   };
 
-  const handleSubmit = onSubmit => ev => {
+  const handleSubmit = (onSubmit) => (ev) => {
     ev.preventDefault();
     onSubmit(formValue);
   };
 
   const validate = (...validations) =>
-    validations.map(validation => validation(formValue)).every(valid => valid);
+    validations
+      .map((validation) => validation(formValue))
+      .every((valid) => valid);
 
   return {
     formValue,

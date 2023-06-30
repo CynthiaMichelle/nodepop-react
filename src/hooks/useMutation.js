@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 function useMutation(mutation) {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +15,7 @@ function useMutation(mutation) {
         setIsLoading(true);
       };
 
-      const finishExecution = error => {
+      const finishExecution = (error) => {
         setIsLoading(false);
         if (error) {
           return setError(error);
@@ -30,15 +30,15 @@ function useMutation(mutation) {
       } catch (error) {
         finishExecution(error);
         if (error.statusCode === 401) {
-          navigate('/login');
+          navigate("/login");
         }
         if (error.statusCode === 404) {
-          navigate('/404');
+          navigate("/404");
         }
         throw error;
       }
     },
-    [mutation, navigate],
+    [mutation, navigate]
   );
 
   return {

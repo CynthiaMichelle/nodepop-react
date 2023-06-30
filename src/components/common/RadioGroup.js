@@ -1,7 +1,7 @@
-import T from 'prop-types';
+import T from "prop-types";
 
 function RadioGroup({ options, value, onChange, ...props }) {
-  const handleChange = ev => {
+  const handleChange = (ev) => {
     onChange(ev);
   };
 
@@ -28,7 +28,7 @@ RadioGroup.propTypes = {
     T.shape({
       value: T.string.isRequired,
       label: T.node.isRequired,
-    }).isRequired,
+    }).isRequired
   ).isRequired,
   value: T.string.isRequired,
   onChange: T.func.isRequired,

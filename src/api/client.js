@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 window.config = JSON.stringify(process.env);
 
@@ -7,8 +7,8 @@ const client = axios.create({
 });
 
 client.interceptors.response.use(
-  response => response.data,
-  error => {
+  (response) => response.data,
+  (error) => {
     if (error.response) {
       return Promise.reject({
         message: error.response.statusText,
@@ -17,17 +17,17 @@ client.interceptors.response.use(
       });
     }
     return Promise.reject({ message: error.message });
-  },
+  }
 );
 
-export const setAuthorizationHeader = token =>
-  (client.defaults.headers.common['Authorization'] = `Bearer ${token}`);
-  
+export const setAuthorizationHeader = (token) =>
+  (client.defaults.headers.common["Authorization"] = `Bearer ${token}`);
+
 export const setMultiPartFormData = () =>
-    (client.defaults.headers.common['Content-Type'] = 'multipart/form-data');
+  (client.defaults.headers.common["Content-Type"] = "multipart/form-data");
 
 export const removeAuthorizationHeader = () => {
-  delete client.defaults.headers.common['Authorization'];
+  delete client.defaults.headers.common["Authorization"];
 };
 
 export default client;
