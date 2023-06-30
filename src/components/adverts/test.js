@@ -5,7 +5,7 @@ import Layout from "../layout/Layout";
 import Advert from "./Advert";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-import { RadioGroup } from "../common";
+import { RadioGroup } from '../common';
 
 const EmptyList = () => (
   <div style={{ textAlign: "center" }}>
@@ -48,12 +48,6 @@ const AdvertsPage = () => {
         .startsWith(querySale.toUpperCase())
   );
 
-  const saleFilter = {
-    todos: { value: '', label: 'Todos' },
-    venta: { value: 'Venta', label: 'Venta' },
-    compra: { value: 'Compra', label: 'Compra' },
-  };
-
   return (
     <Layout title="Últimos anuncios">
       {isLoading ? (
@@ -76,9 +70,11 @@ const AdvertsPage = () => {
                     />
                     <div>
                       <span>Tipo de anuncio </span>
-                      <RadioGroup
-                        options={Object.values(saleFilter)}
-                        name="venta"
+                      <input
+                        label="Tipo de anuncio"
+                        type="text"
+                        placeholder="Venta/Compra"
+                        style={{ borderWidth: 1 }}
                         value={querySale}
                         onChange={(event) => setQuerySale(event.target.value)}
                       />

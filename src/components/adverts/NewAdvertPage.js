@@ -1,6 +1,7 @@
 import { memo, useCallback, useMemo, useState } from "react";
 import Layout from "../layout/Layout";
 import Button from "../shared/Button";
+import SelectTags from './SelectTags';
 
 import "./NewAdvertPage.css";
 import { createAdvert } from "./service";
@@ -101,15 +102,7 @@ const NewAdvertPage = () => {
               />
               <div>
                 <br></br>
-                <span>Tags </span>
-                <input
-                  label="Tags"
-                  type="text"
-                  style={{ borderWidth: 1 }}
-                  value={advertTags}
-                  onChange={handleTagsChange}
-                  required
-                />
+                <SelectTags name="tags" value={advertTags} onChange={handleTagsChange} />
               </div>
               <div>
                 <br></br>

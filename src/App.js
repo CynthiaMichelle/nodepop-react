@@ -5,6 +5,7 @@ import AdvertsPage from "./components/adverts/AdvertsPage";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import AdvertPage from "./components/adverts/AdvertPage";
 import RequireAuth from "./components/auth/RequireAuth";
+import NotFoundPage from "./NotFoundPage";
 
 import "./App.css";
 
@@ -16,7 +17,14 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/adverts" element={<AdvertsPage />} />
+          <Route
+            path="/adverts"
+            element={
+              <RequireAuth>
+                <AdvertsPage />
+              </RequireAuth>
+            }
+          />
           <Route path="/adverts/:advertId" element={<AdvertPage />} />
           <Route
             path="/adverts/new"
@@ -26,8 +34,10 @@ function App() {
               </RequireAuth>
             }
           />
+
+          <Route path="/404" element={<NotFoundPage />}>
+          </Route>
           <Route path="/" element={<Navigate to="/adverts" />} />
-          <Route path="/404" element={<div>404 | Not found</div>} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </div>

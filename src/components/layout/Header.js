@@ -1,8 +1,9 @@
 import Button from "../shared/Button";
-
+import {AuthButton}  from "../auth/AuthButton"
 import logo from "../../assets/logo.png";
 import { logout } from "../auth/service";
 import classNames from "classnames";
+import { ConfirmationButton } from '../common/';
 
 import "./Header.css";
 import { Link, NavLink } from "react-router-dom";
@@ -29,21 +30,9 @@ const Header = ({ className }) => {
         </NavLink>{" "}
         <NavLink to="/adverts" className="header-nav-item" end>
           Últimos anuncios
-        </NavLink>
-        {isLogged ? (
-          <Button onClick={handleLogoutClick} className="header-button">
-            Logout
-          </Button>
-        ) : (
-          <Button
-            as={Link}
-            variant="primary"
-            className="header-button"
-            to="/login"
-          >
-            Login
-          </Button>
-        )}
+         </NavLink>
+        <span> </span>
+        <AuthButton />
       </nav>
     </header>
   );

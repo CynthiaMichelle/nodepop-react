@@ -1,12 +1,27 @@
 import React from "react";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-
+import { ConfirmationButton } from "../common";
 import Photo from "../shared/Photo";
+import placeholder from "../../assets/placeholder.png";
 import "./Advert.css";
 
-const Advert = ({ name, sale, createdAt, price, tags, photo }) => {
+const Advert = ({ name, sale, createdAt, price, tags, photo, isDetail, onDelete, isLoading }) => {
   sale = sale ? "Venta" : "Compra";
   price = String(price) + "€";
+
+  const deleteButton = () => {
+    return isDetail ? (
+      <ConfirmationButton
+        confirmation="Are you sure?"
+        onConfirm={onDelete}
+        disabled={isLoading}
+      >
+        Delete
+      </ConfirmationButton>
+    ) : (
+      <span></span>
+    )
+  };
 
   return (
     <article className="advert bordered">
@@ -31,7 +46,12 @@ const Advert = ({ name, sale, createdAt, price, tags, photo }) => {
         <div>
           Tags: <span>{tags}</span>
         </div>
-        <img src={photo}></img>
+        <div>
+        <img src={photo || placeholder} style={{ width: "400px" }}></img>
+        </div>
+        <div>
+        {deleteButton()}
+        </div>
       </div>
     </article>
   );

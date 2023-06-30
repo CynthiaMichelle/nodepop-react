@@ -7,9 +7,18 @@ export const getLatestAdverts = () => {
   return client.get(url);
 };
 
+export const getTags = () => {
+  return client.get(`${adverstUrl}/tags`);
+};
+
+
 export const getAdvert = (advertId) => {
   const url = `${adverstUrl}/${advertId}`;
   return client.get(url);
+};
+
+export const deleteAdvert = advertId => {
+  return client.delete(`${adverstUrl}/${advertId}`);
 };
 
 export const createAdvert = (advert) => {
